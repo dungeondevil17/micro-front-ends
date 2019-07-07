@@ -9,8 +9,13 @@ const Browse = ({ history }) => (
   <MicroFrontend history={history} name="Browse" host={HOST_BROWSE} />
 );
 
-const Restaurant = ({ history }) => (
-  <MicroFrontend history={history} name="Restaurant" host={HOST_RESTAURANT} />
+const Restaurant = ({ history, match: { params } }) => (
+  <MicroFrontend
+    history={history}
+    name="Restaurant"
+    host={HOST_RESTAURANT}
+    params={{ ...params }}
+  />
 );
 
 const NavLink = ({ name, route }) => (
@@ -26,10 +31,9 @@ const AppHeader = () => (
   <div
     style={{
       display: "inline-block",
-      backgroundColor: "#cb6566",
+      backgroundColor: "#332211",
       width: "100%",
-      height: "48px",
-      padding: "20px"
+      height: "48px"
     }}
   >
     <NavLink route="/" name="Browse Restaurants" />
@@ -45,8 +49,8 @@ class App extends React.Component {
         <React.Fragment>
           <AppHeader />
           <Switch>
-            <Route exact path="/" component={Browse} />{" "}
-            <Route path="/restaurant/:id" component={Restaurant} />{" "}
+            <Route exact path="/" component={Browse} />
+            <Route path="/restaurant/:id" component={Restaurant} />
           </Switch>
         </React.Fragment>
       </Router>

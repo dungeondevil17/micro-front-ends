@@ -7,7 +7,8 @@ module.exports = {
   entry: {
     container: "./src/index.js",
     Browse: "./src/browse/index.js",
-    Restaurant: "./src/restaurant/index.js"
+    Restaurant: "./src/restaurant/index.js",
+    components: "./src/components/button.js"
   },
   output: {
     path: path.resolve(__dirname, "build"),
@@ -24,6 +25,10 @@ module.exports = {
       {
         test: /\.js$/,
         loader: "babel-loader"
+      },
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"]
       }
     ]
   },
@@ -35,7 +40,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: "index.html",
       template: "index.html",
-      chunks: ["container"]
+      chunks: ["container", "components"]
     }),
     new WebpackAssetsManifest({
       output: "assets-manifest.json"

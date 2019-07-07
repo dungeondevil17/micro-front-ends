@@ -2,9 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 
-window.renderRestaurant = (containerId, history) => {
+window.renderRestaurant = (containerId, history, params) => {
+  debugger;
   ReactDOM.render(
-    <App history={history} />,
+    <App history={history} params={params} />,
     document.getElementById(containerId)
   );
 };
